@@ -4,8 +4,8 @@ process PURPLE {
 
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/hmftools-purple:4.2--hdfd78af_0' :
-        'biocontainers/hmftools-purple:4.2--hdfd78af_0' }"
+        'https://depot.galaxyproject.org/singularity/hmftools-purple:4.3--hdfd78af_0' :
+        'biocontainers/hmftools-purple:4.3--hdfd78af_0' }"
 
     input:
     tuple val(meta), path(amber_dir), path(cobalt_dir), path(sv_tumor_vcf), path(sv_tumor_tbi), path(sv_normal_vcf), path(sv_normal_tbi), path(smlv_tumor_vcf), path(smlv_normal_vcf)
@@ -96,12 +96,15 @@ process PURPLE {
     touch purple/${meta.tumor_id}.purple.driver.catalog.germline.tsv
     touch purple/${meta.tumor_id}.purple.driver.catalog.somatic.tsv
     touch purple/${meta.tumor_id}.purple.germline.vcf.gz
-    touch purple/${meta.tumor_id}.purple.germline.vcf.gz
+    touch purple/${meta.tumor_id}.purple.germline.vcf.gz.tbi
     touch purple/${meta.tumor_id}.purple.purity.tsv
     touch purple/${meta.tumor_id}.purple.qc
     touch purple/${meta.tumor_id}.purple.somatic.vcf.gz
+    touch purple/${meta.tumor_id}.purple.somatic.vcf.gz.tbi
     touch purple/${meta.tumor_id}.purple.sv.germline.vcf.gz
+    touch purple/${meta.tumor_id}.purple.sv.germline.vcf.gz.tbi
     touch purple/${meta.tumor_id}.purple.sv.vcf.gz
+    touch purple/${meta.tumor_id}.purple.sv.vcf.gz.tbi
 
     echo -e '${task.process}:\\n  stub: noversions\\n' > versions.yml
     """
