@@ -55,9 +55,9 @@ process LINX_SOMATIC {
     """
     mkdir linx_somatic/
 
-    touch linx_somatic/${meta.sample_id}.tumor.linx.fusion.tsv
-    touch linx_somatic/${meta.sample_id}.tumor.linx.breakend.tsv
-    touch linx_somatic/${meta.sample_id}.tumor.linx.svs.tsv
+    touch linx_somatic/${meta.sample_id}.linx.fusion.tsv
+    touch linx_somatic/${meta.sample_id}.linx.breakend.tsv
+    touch linx_somatic/${meta.sample_id}.linx.svs.tsv
 
     echo -e '${task.process}:\\n  stub: noversions\\n' > versions.yml
     """
