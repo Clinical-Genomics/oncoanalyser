@@ -109,7 +109,7 @@ workflow NFCORE_ONCOANALYSER {
 workflow {
     main:
 
-    file("${workflow.workDir}/params_case_workdir.txt").text = params.case_workdir
+    // file("${workflow.workDir}/params_case_workdir.txt").text = params.case_workdir
 
     file("${workflow.workDir}/environment.txt").text = System.getenv().collect { k, v -> "$k=$v" }.join("\n")
 
